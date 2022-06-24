@@ -1,0 +1,44 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+    "solution": {
+        "name": "hello-sign-command-set-client-side-solution",
+        "id": "f36b4a6c-c652-49e6-a9e0-2e9aa09f38c9",
+        "version": "8.0.0.0",
+        "includeClientSideAssets": true,
+        "skipFeatureDeployment": true,
+        "isDomainIsolated": false,
+        "developer": {
+            "name": "",
+            "websiteUrl": "",
+            "privacyUrl": "",
+            "termsOfUseUrl": "",
+            "mpnId": "Undefined-1.14.0"
+        },
+        "metadata": {
+            "shortDescription": {
+                "default": "HelloSignCommandSet description"
+            },
+            "longDescription": {
+                "default": "HelloSignCommandSet description"
+            },
+            "screenshotPaths": [],
+            "videoUrl": "",
+            "categories": []
+        },
+        "features": [{
+            "title": "Application Extension - Deployment of custom action",
+            "description": "Deploys a custom action with ClientSideComponentId association",
+            "id": "40867f69-f2e4-454e-9c5f-9a511276ae75",
+            "version": "1.0.0.0",
+            "assets": {
+                "elementManifests": [
+                    "elements.xml",
+                    "ClientSideInstance.xml"
+                ]
+            }
+        }]
+    },
+    "paths": {
+        "zippedPackage": "solution/hello-sign-command-set.sppkg"
+    }
+}

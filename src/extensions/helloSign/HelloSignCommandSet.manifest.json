@@ -1,0 +1,37 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/spfx/command-set-extension-manifest.schema.json",
+
+    "id": "6e6f9c79-b45f-4967-b6bd-f81169c8171e",
+    "alias": "HelloSignCommandSet",
+    "componentType": "Extension",
+    "extensionType": "ListViewCommandSet",
+
+    // The "*" signifies that the version should be taken from the package.json
+    "version": "*",
+    "manifestVersion": 2,
+
+    // If true, the component can only be installed on sites where Custom Script is allowed.
+    // Components that allow authors to embed arbitrary script code should set this to true.
+    // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+    "requiresCustomScript": false,
+
+
+    "items": {
+        "COMMAND_QUICKSIGN": {
+            "title": { "default": "Quick Signature" },
+            "iconImageUrl": "https://russellwgove.sharepoint.com/sites/CDN/Images1/HelloSign/Hellosign.png",
+            "type": "command"
+        },
+        "COMMAND_EMBEDDEDSIGNATURE": {
+            "title": { "default": "Get Signatures" },
+            "iconImageUrl": "https://russellwgove.sharepoint.com/sites/CDN/Images1/HelloSign/Hellosign.png",
+            "type": "command"
+        },
+
+        "COMMAND_CHECKSTATUS": {
+            "title": { "default": "Check Signature Status" },
+            "iconImageUrl": "https://russellwgove.sharepoint.com/sites/CDN/Images1/HelloSign/HellosignStatus.png",
+            "type": "command"
+        }
+    }
+}

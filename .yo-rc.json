@@ -1,0 +1,17 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.14.0",
+    "libraryName": "hello-sign-command-set",
+    "libraryId": "f36b4a6c-c652-49e6-a9e0-2e9aa09f38c9",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "HelloSignCommandSet",
+    "solutionShortDescription": "HelloSignCommandSet description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "extension",
+    "extensionType": "ListViewCommandSet"
+  }
+}
