@@ -4,6 +4,6 @@
         Title="HelloSign"
         Location="ClientSideExtension.ListViewCommandSet.CommandBar"
         ListTemplateId="101"
-        Properties="{&quot;hellosignFunctionBaseUrl&quot;:&quot;https://hellosignfunctionstest2fromvs.azurewebsites.net&quot;, &quot;helloSignClientId&quot;:&quot;feacd431171ddbad384ba91bc88e734b&quot;,&quot;supportedFileTypes&quot;:&quot;doc, docx, pdf, ppsx, ppt, pptx, jpg, jpeg, png, xls, xlsx, txt, html, gif&quot;}"
+        Properties="{&quot;adminWebUrl&quot;:&quot;https://russellwgove.sharepoint.com/sites/HelloSignAdminSite&quot;,&quot;hellosignFunctionBaseUrl&quot;:&quot;https://func-rwghellosignfunctions-ykqdfq5aspgrs.azurewebsites.net&quot;, &quot;hellosignFunctionClientID&quot;:&quot;c5b8ce97-34aa-49a5-91e1-3bf4d20fd2a3&quot;, &quot;f485d20bcd556fe6ace45b5f65549cd6&quot;:&quot;29c7f3b9d2da21098f0b5c74469758dd&quot;,&quot;supportedFileTypes&quot;:&quot;doc, docx, pdf, ppsx, ppt, pptx, jpg, jpeg, png, xls, xlsx, txt, html, gif&quot;}"
         ComponentId="6e6f9c79-b45f-4967-b6bd-f81169c8171e" />
 </Elements>

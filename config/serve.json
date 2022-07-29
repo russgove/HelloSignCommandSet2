@@ -4,15 +4,30 @@
     "https": true,
     "serveConfigurations": {
         "default": {
-            "pageUrl": "https://russellwgove.sharepoint.com/sites/HelloSignTestTeamSite/Shared%20Documents/Forms/AllItems.aspx",
+            "pageUrl": "https://russellwgove.sharepoint.com/sites/HellosignTest2/Shared%20Documents/Forms/AllItems.aspx",
             "customActions": {
                 "6e6f9c79-b45f-4967-b6bd-f81169c8171e": {
                     "location": "ClientSideExtension.ListViewCommandSet.CommandBar",
                     "properties": {
-                        "sampleTextOne": "One item is selected in the list",
-                        "sampleTextTwo": "This command is always visible.",
-                        "hellosignFunctionBaseUrl": "https://hellosignfunctionstest2fromvs.azurewebsites.net",
-                        "helloSignClientId": "feacd431171ddbad384ba91bc88e734b",
+                        "adminWebUrl": "https://russellwgove.sharepoint.com/sites/SharePointHelloSignAdmin",
+                        "hellosignFunctionBaseUrl": "https://func-rwgHelloSignFunctions-xibke6eppzlgw.azurewebsites.net",
+                        "hellosignFunctionClientID": "05ef7c3f-5fd4-42be-8323-c0af403b3a62",
+                        "helloSignClientId": "e046e3fff315afca650ce621ff3516fb",
+                        "supportedFileTypes": "doc, docx, pdf, ppsx, ppt, pptx, jpg, jpeg, png, xls, xlsx, txt, html, gif"
+                    }
+                }
+            }
+        },
+        "rgove3": {
+            "pageUrl": "https://rgove3.sharepoint.com/sites/HelloSignTestSite/Shared%20Documents/Forms/AllItems.aspx",
+            "customActions": {
+                "6e6f9c79-b45f-4967-b6bd-f81169c8171e": {
+                    "location": "ClientSideExtension.ListViewCommandSet.CommandBar",
+                    "properties": {
+                        "adminWebUrl": "https://rgove3.sharepoint.com/sites/hellosignadminsite",
+                        "hellosignFunctionBaseUrl": "https://func-rwghellosignfunctions.azurewebsites.net",
+                        "hellosignFunctionClientID": "becb3efa-2875-4eda-8fb8-40d03f7cb4e7",
+                        "helloSignClientId": "81a671fcf89bcfc2cfd319f18b3c0636",
                         "supportedFileTypes": "doc, docx, pdf, ppsx, ppt, pptx, jpg, jpeg, png, xls, xlsx, txt, html, gif"
                     }
                 }
@@ -24,11 +39,25 @@
                 "6e6f9c79-b45f-4967-b6bd-f81169c8171e": {
                     "location": "ClientSideExtension.ListViewCommandSet.CommandBar",
                     "properties": {
-                        "sampleTextOne": "One item is selected in the list",
-                        "sampleTextTwo": "This command is always visible.",
+                        "adminWebUrl": "https://russellwgove.sharepoint.com/sites/SharePointHelloSignAdmin",
+
                         "hellosignFunctionBaseUrl": "https://hellosignfunctionstest2fromvs.azurewebsites.net",
                         "helloSignClientId": "feacd431171ddbad384ba91bc88e734b",
                         "supportedFileTypes": "doc, docx, pdf, ppsx, ppt, pptx, jpg, jpeg, png, xls, xlsx, txt, html, gif"
+                    }
+                }
+            }
+        },
+        "ngrok": {
+            "pageUrl": "https://russellwgove.sharepoint.com/sites/HelloSignTestTeamSite/Shared%20Documents/Forms/AllItems.aspx",
+            "customActions": {
+                "0fd3479d-acab-42f5-a909-ac1224d71557": {
+                    "location": "ClientSideExtension.ListViewCommandSet.CommandBar",
+                    "properties": {
+                        "hellosignFunctionBaseUrl": "https://331fc0fded31.ngrok.io",
+                        "helloSignClientId": "f617525a557006f05595b04b96812df0",
+                        "supportedFileTypes": "doc, docx, pdf, ppsx, ppt, pptx, jpg, jpeg, png, xls, xlsx, txt, html, gif",
+                        "adminWebUrl": "https://russellwgove.sharepoint.com/sites/SharePointHelloSignAdmin"
                     }
                 }
             }

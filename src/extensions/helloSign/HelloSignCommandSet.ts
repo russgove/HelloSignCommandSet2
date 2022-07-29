@@ -8,7 +8,11 @@ import {
 import { spfi, SPFx } from "@pnp/sp";
 import HelloSign from "hellosign-embedded";
 import { Dialog } from "@microsoft/sp-dialog";
-import { AadHttpClient, HttpClientResponse ,AadHttpClientConfiguration} from "@microsoft/sp-http";
+import {
+  AadHttpClient,
+  HttpClientResponse,
+  AadHttpClientConfiguration,
+} from "@microsoft/sp-http";
 import * as strings from "HelloSignCommandSetStrings";
 import CheckStatusDialog from "../../dialogs/CheckStatus";
 
@@ -21,11 +25,13 @@ import QuickSignatureRequestDialog from "../../dialogs/QuickSignatureRequestDial
  */
 export interface IHelloSignCommandSetProperties {
   hellosignFunctionBaseUrl: string;
+  hellosignFunctionClientID: string;
   helloSignClientId: string;
   supportedFileTypes: string;
+  adminWebUrl: string;
 }
 
-const LOG_SOURCE: string = 'HelloSignCommandSet';
+const LOG_SOURCE: string = "HelloSignCommandSet";
 
 export default class HelloSignCommandSet extends BaseListViewCommandSet<IHelloSignCommandSetProperties> {
   private aadHttpClient: AadHttpClient;
@@ -33,37 +39,44 @@ export default class HelloSignCommandSet extends BaseListViewCommandSet<IHelloSi
   public onInit(): Promise<void> {
     debugger;
     return super.onInit().then((_) => {
+      debugger;
       const sp = spfi().using(SPFx(this.context));
-
+console.log(`hellosignFunctionBaseUrl=${this.properties.hellosignFunctionBaseUrl}`);
+console.log(`hellosignFunctionClientID=${this.properties.hellosignFunctionClientID}`);
+ 
       return this.context.aadHttpClientFactory
-        .getClient(this.properties.hellosignFunctionBaseUrl)
+        .getClient(this.properties.hellosignFunctionClientID)
+        //.getClient("becb3efa-2875-4eda-8fb8-40d03f7cb4e7")
         .then((client): void => {
           // connect to the API
           debugger;
           this.aadHttpClient = client;
           this.wakeUpService();
-        }).catch((e)=>{
+        })
+        .catch((e) => {
           debugger;
         });
     });
   }
   private wakeUpService() {
     debugger;
-  
-    this.aadHttpClient.get(`${this.properties.hellosignFunctionBaseUrl}/api/WakeUp`,AadHttpClient.configurations.v1)
-    .then((response: HttpClientResponse) => {
-      console.log('service is awake');
-    })
-    .catch((e)=>{
-      console.error(e);
-      alert('failed to wake up service');
-    });
 
+    this.aadHttpClient
+      .get(
+        `${this.properties.hellosignFunctionBaseUrl}/api/WakeUp`,
+        AadHttpClient.configurations.v1
+      )
+      .then((response: HttpClientResponse) => {
+        console.log("service is awake");
+      })
+      .catch((e) => {
+        console.error(e);
+        alert("failed to wake up service");
+      });
   }
   public onListViewUpdated(
     event: IListViewCommandSetListViewUpdatedParameters
   ): void {
-    
     const quicksign: Command = this.tryGetCommand("COMMAND_QUICKSIGN");
     const embeddedsign: Command = this.tryGetCommand(
       "COMMAND_EMBEDDEDSIGNATURE"
@@ -100,7 +113,6 @@ export default class HelloSignCommandSet extends BaseListViewCommandSet<IHelloSi
   }
 
   public onExecute(event: IListViewCommandSetExecuteEventParameters): void {
-  
     switch (event.itemId) {
       case "COMMAND_QUICKSIGN":
         this.cmdQuickSign(event);
@@ -118,7 +130,6 @@ export default class HelloSignCommandSet extends BaseListViewCommandSet<IHelloSi
     }
   }
   private cmdQuickSign(event: IListViewCommandSetExecuteEventParameters) {
-   
     const quickSignDlg: QuickSignatureRequestDialog =
       new QuickSignatureRequestDialog();
     quickSignDlg.title = `Send document  ${event.selectedRows[0].getValueByName(
@@ -134,7 +145,6 @@ export default class HelloSignCommandSet extends BaseListViewCommandSet<IHelloSi
     quickSignDlg.show();
   }
   private cmdChekStatus(event: IListViewCommandSetExecuteEventParameters) {
-
     const dialog: CheckStatusDialog = new CheckStatusDialog();
     dialog.title = `CHECK STATUS`;
     dialog.aadHttpClient = this.aadHttpClient;
@@ -142,8 +152,7 @@ export default class HelloSignCommandSet extends BaseListViewCommandSet<IHelloSi
     dialog.webServerRelativeUrl =
       this.context.pageContext.web.serverRelativeUrl;
     dialog.helloSignClientId = this.properties.helloSignClientId;
-    dialog.adminWebUrl =
-      "https://russellwgove.sharepoint.com/sites/SharePointHelloSignAdmin";
+    dialog.adminWebUrl = this.properties.adminWebUrl;
     dialog.signatureRequestListName = "SignatureRequests";
     dialog.documentUniqueId = event.selectedRows[0].getValueByName("UniqueId");
     dialog.hellosignFunctionBaseUrl = this.properties.hellosignFunctionBaseUrl;
@@ -151,31 +160,14 @@ export default class HelloSignCommandSet extends BaseListViewCommandSet<IHelloSi
     dialog.show();
   }
   private cmdEmbeddedSign(event: IListViewCommandSetExecuteEventParameters) {
-   
-    console.log(`in embedded signg isProcessing=${this.isProcessing}`)
+    console.log(`in embedded signg isProcessing=${this.isProcessing}`);
     if (!this.isProcessing) {
       this.isProcessing = true;
-      console.log(`changed isprocessing to ${this.isProcessing}`)
-      this.CreateEmbeddedSignatureRequest(
-        this.context.pageContext.user.email,
-        this.context.pageContext.web.serverRelativeUrl,
-        event.selectedRows[0].getValueByName("FileRef"),
-        event.selectedRows[0].getValueByName("FileLeafRef"),
-        window.location.origin,
-        this.context.pageContext.list.title,
-        event.selectedRows[0].getValueByName("UniqueId")
-      );
-     
+      this.CreateEmbeddedSignatureRequest(event);
     }
   }
   public CreateEmbeddedSignatureRequest(
-    userEmail: string,
-    webServerRelativeUrl: string,
-    fileServerRelativeUrl: string,
-    fileName: string,
-    siteUrl: string,
-    libraryName: string,
-    documentUniqueId: string
+    event: IListViewCommandSetExecuteEventParameters
   ): Promise<any> {
     debugger;
     const requestHeaders: Headers = new Headers();
@@ -186,13 +178,13 @@ export default class HelloSignCommandSet extends BaseListViewCommandSet<IHelloSi
     //requestHeaders.append('mode', 'no-cors');
     requestHeaders.append("Content-type", "application/json");
     const body: string = JSON.stringify({
-      userEmail: userEmail,
-      webServerRelativeUrl: webServerRelativeUrl,
-      fileServerRelativeUrl: fileServerRelativeUrl,
-      fileName: fileName,
-      siteUrl: siteUrl,
-      libraryName: libraryName,
-      documentUniqueId: documentUniqueId,
+      userEmail: this.context.pageContext.user.email,
+      webServerRelativeUrl: this.context.pageContext.web.serverRelativeUrl,
+      fileServerRelativeUrl: event.selectedRows[0].getValueByName("FileRef"),
+      fileName: event.selectedRows[0].getValueByName("FileLeafRef"),
+      siteUrl: window.location.origin,
+      libraryName: this.context.pageContext.list.title,
+      documentUniqueId: event.selectedRows[0].getValueByName("UniqueId"),
     });
     console.log(body);
     return this.aadHttpClient
@@ -206,28 +198,22 @@ export default class HelloSignCommandSet extends BaseListViewCommandSet<IHelloSi
         }
       )
       .then(async (response: HttpClientResponse) => {
-        this.isProcessing = false;//just preventing a doubleclick
-          console.log(`changed isprocessing to ${this.isProcessing}`)
+        this.isProcessing = false; //just preventing a doubleclick
         if (response.status === 200) {
-          debugger;
           var resp = await response.json();
-console.dir(resp);
-if(resp.errorName){
-  console.error(resp);
-  alert(resp.message);
-return;
-}
-
+          if (resp.errorName) {
+            console.error(resp);
+            alert(`HelloSign Error : ${resp.message}`);
+            return;
+          }
           const client = new HelloSign();
           client.open(resp.claimUrl, {
             clientId: this.properties.helloSignClientId,
             debug: true,
             //   skipDomainVerification: true
           });
-          
-          
-        } else {
-          
+        } 
+        else { // response.status !== 200
           alert("HTTP Error in CreateEmbeddedSignatureRequest");
           console.error(
             `HTTP Error in CreateEmbeddedSignatureRequest, reponse follows`
@@ -237,9 +223,8 @@ return;
         }
       })
       .catch((err) => {
-        this.isProcessing = false;//just preventing a doubleclick
-          console.log(`changed isprocessing to ${this.isProcessing}`)
-        debugger;
+        this.isProcessing = false; //just preventing a doubleclick
+       debugger;
         alert("Error in CreateEmbeddedSignatureRequest");
         console.log(`Error in CreateEmbeddedSignatureRequest Reponse follows`);
         console.log(err);

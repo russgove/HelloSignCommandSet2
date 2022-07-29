@@ -1,12 +1,18 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
     "solution": {
-        "name": "hello-sign-command-set-client-side-solution",
+        "name": "HelloSign-Tronox",
         "id": "f36b4a6c-c652-49e6-a9e0-2e9aa09f38c9",
-        "version": "8.0.0.0",
+        "version": "26.0.0.0",
         "includeClientSideAssets": true,
-        "skipFeatureDeployment": true,
+        "skipFeatureDeployment": false,
         "isDomainIsolated": false,
+        "webApiPermissionRequests": [{
+                "resource": "func-rwgHelloSignFunctions-ykqdfq5aspgrs",
+                "scope": "user_impersonation"
+            }
+
+        ],
         "developer": {
             "name": "",
             "websiteUrl": "",
@@ -16,17 +22,17 @@
         },
         "metadata": {
             "shortDescription": {
-                "default": "HelloSignCommandSet description"
+                "default": "This app will allow users to send a document to HelloSign for signature."
             },
             "longDescription": {
-                "default": "HelloSignCommandSet description"
+                "default": "This app will allow users to send a document to HelloSign for signature."
             },
             "screenshotPaths": [],
             "videoUrl": "",
             "categories": []
         },
         "features": [{
-            "title": "Application Extension - Deployment of custom action",
+            "title": "Application Extension - Deployment of custom action to allow users to send documentsto HelloSign",
             "description": "Deploys a custom action with ClientSideComponentId association",
             "id": "40867f69-f2e4-454e-9c5f-9a511276ae75",
             "version": "1.0.0.0",

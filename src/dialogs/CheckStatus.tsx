@@ -166,7 +166,7 @@ class CheckStatusContent extends React.Component<
       .then(async (response: HttpClientResponse) => {
         debugger;
         if (response.status === 200) {
-
+debugger;
           var result: SignatureRequestFromHS = await response.json();
           this.setState((current) => ({
             ...current,
@@ -218,13 +218,13 @@ class CheckStatusContent extends React.Component<
 
         }
       },
-      {
-        disabled: this._selection.count !== 1,
-        key: 'edit',
-        text: 'Edit Signatory Email',
-        iconProps: { iconName: 'Edit' },
-        onClick: () => { debugger; console.log(this._selection.count); console.log('Download'); },
-      },
+      // {
+      //   disabled: this._selection.count !== 1,
+      //   key: 'edit',
+      //   text: 'Edit Signatory Email',
+      //   iconProps: { iconName: 'Edit' },
+      //   onClick: () => { debugger; console.log(this._selection.count); console.log('Download'); },
+      // },
     ];
     return (
       <DialogContent
