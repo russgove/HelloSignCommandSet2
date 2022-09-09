@@ -3,12 +3,13 @@
     "solution": {
         "name": "HelloSign-Tronox",
         "id": "f36b4a6c-c652-49e6-a9e0-2e9aa09f38c9",
-        "version": "26.0.0.0",
+        "version": "32.0.0.0",
         "includeClientSideAssets": true,
-        "skipFeatureDeployment": false,
+        "skipFeatureDeployment": true,
         "isDomainIsolated": false,
+        "iconPath": "images/Hellosign.png",
         "webApiPermissionRequests": [{
-                "resource": "func-rwgHelloSignFunctions-ykqdfq5aspgrs",
+                "resource": "func-rwgHelloSignFunctions-ox6jehkgzcbjg",
                 "scope": "user_impersonation"
             }
 
@@ -32,7 +33,7 @@
             "categories": []
         },
         "features": [{
-            "title": "Application Extension - Deployment of custom action to allow users to send documentsto HelloSign",
+            "title": "HelloSign Tronox - this feature deploys a custom action to allow users to send documentsto HelloSign",
             "description": "Deploys a custom action with ClientSideComponentId association",
             "id": "40867f69-f2e4-454e-9c5f-9a511276ae75",
             "version": "1.0.0.0",

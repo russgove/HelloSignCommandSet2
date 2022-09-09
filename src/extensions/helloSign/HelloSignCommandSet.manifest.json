@@ -19,18 +19,18 @@
     "items": {
         "COMMAND_QUICKSIGN": {
             "title": { "default": "Quick Signature" },
-            "iconImageUrl": "https://russellwgove.sharepoint.com/sites/CDN/Images1/HelloSign/Hellosign.png",
+            "iconImageUrl": "https://tronoxglobal.sharepoint.com/sites/CDN/Images1/HelloSign/Hellosign.png",
             "type": "command"
         },
         "COMMAND_EMBEDDEDSIGNATURE": {
             "title": { "default": "Get Signatures" },
-            "iconImageUrl": "https://russellwgove.sharepoint.com/sites/CDN/Images1/HelloSign/Hellosign.png",
+            "iconImageUrl": "https://tronoxglobal.sharepoint.com/sites/CDN/Images1/HelloSign/Hellosign.png",
             "type": "command"
         },
 
         "COMMAND_CHECKSTATUS": {
             "title": { "default": "Check Signature Status" },
-            "iconImageUrl": "https://russellwgove.sharepoint.com/sites/CDN/Images1/HelloSign/HellosignStatus.png",
+            "iconImageUrl": "https://tronoxglobal.sharepoint.com/sites/CDN/Images1/HelloSign/HellosignStatus.png",
             "type": "command"
         }
     }
