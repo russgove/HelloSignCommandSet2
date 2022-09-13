@@ -4,15 +4,15 @@
     "https": true,
     "serveConfigurations": {
         "default": {
-            "pageUrl": "https://russellwgove.sharepoint.com/sites/HellosignTest2/Shared%20Documents/Forms/AllItems.aspx",
+            "pageUrl": "https://tronoxglobal.sharepoint.com/sites/Cristal/gs/Company%20Leases/Forms/AllItems.aspx",
             "customActions": {
                 "6e6f9c79-b45f-4967-b6bd-f81169c8171e": {
                     "location": "ClientSideExtension.ListViewCommandSet.CommandBar",
                     "properties": {
-                        "adminWebUrl": "https://russellwgove.sharepoint.com/sites/SharePointHelloSignAdmin",
-                        "hellosignFunctionBaseUrl": "https://func-rwgHelloSignFunctions-xibke6eppzlgw.azurewebsites.net",
-                        "hellosignFunctionClientID": "05ef7c3f-5fd4-42be-8323-c0af403b3a62",
-                        "helloSignClientId": "e046e3fff315afca650ce621ff3516fb",
+                        "adminWebUrl": "https://tronoxglobal.sharepoint.com/sites/SharePointHelloSignAdmin",
+                        "hellosignFunctionBaseUrl": "https://func-rwghellosignfunctions-ox6jehkgzcbjg.azurewebsites.net",
+                        "hellosignFunctionClientID": "6672eefb-8f6d-4fcf-af80-c22b7fe42cf0",
+                        "helloSignClientId": "72dbbad9fc740f6552d5c45f06c54aa6",
                         "supportedFileTypes": "doc, docx, pdf, ppsx, ppt, pptx, jpg, jpeg, png, xls, xlsx, txt, html, gif"
                     }
                 }
