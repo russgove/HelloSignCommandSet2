@@ -4,7 +4,7 @@
     "https": true,
     "serveConfigurations": {
         "default": {
-            "pageUrl": "https://tronoxglobal.sharepoint.com/sites/Cristal/gs/Company%20Leases/Forms/AllItems.aspx",
+            "pageUrl": "https://xxx.sharepoint.com/sites/Cristal/gs/Company%20Leases/Forms/AllItems.aspx",
             "customActions": {
                 "6e6f9c79-b45f-4967-b6bd-f81169c8171e": {
                     "location": "ClientSideExtension.ListViewCommandSet.CommandBar",
